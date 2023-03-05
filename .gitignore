@@ -1,0 +1,2 @@
+# excluded from linux repo, due to license issues
+.clang-format
