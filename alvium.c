@@ -4826,12 +4826,6 @@ static int alvium_parse_mipi_ep(struct alvium *sensor, struct device_node *ep)
 	alvium_dbg(sensor->dev, "MIPI lanes configured: %d",
 		   sensor->minfo.num_lanes);
 
-	// if (of_property_read_u32(fwnode, "csi_clk_freq",
-	// 			 &sensor->minfo.clk_freq))
-	// 	sensor->minfo.clk_freq = 0;
-
-	// alvium_dbg(sensor->dev, "csi_clk_freq: %d, %d", sensor->minfo.clk_freq,
-	// 	endpoint.nr_of_link_frequencies);
 	alvium_dbg(sensor->dev, "num freqs: %d",
 		   endpoint.nr_of_link_frequencies);
 	for (i = 0; i < endpoint.nr_of_link_frequencies; i++) {
@@ -4851,17 +4845,6 @@ static int alvium_of_probe(struct alvium *sensor)
 	struct device_node *ep;
 	struct gpio_desc *gpio;
 	int ret;
-
-	// get clock - actually we dont need external clock ;)
-	// clk = devm_clk_get(dev, "ext");
-	// ret = PTR_ERR_OR_ZERO(clk);
-	// if (ret == -EPROBE_DEFER)
-	// 	return ret;
-	// if (ret < 0) {
-	// 	dev_err(dev, "Failed to get external clock (%d)", ret);
-	// 	return ret;
-	// }
-	// sensor->extclk = clk;
 
 	// get reset GPIO
 	gpio = devm_gpiod_get_optional(dev, "reset", GPIOD_OUT_HIGH);
